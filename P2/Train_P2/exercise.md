@@ -21,3 +21,17 @@
     - Then, it should use `super().insert_row()` to actually save the data.
 
 ---
+
+## Task 3 :
+
+- Import ABC and abstractmethod.
+
+- Define an abstract class DatabaseTable.
+
+- Enforce that all children must have insert_row and select_all.
+
+- Create your PostgresTable class that inherits from DatabaseTable.
+
+- Implement the logic (reuse your previous dictionary logic).
+
+- **Bonus (Composition):** Inside PostgresTable, add an attribute `self.connection_string`. Instead of just a string, make it an instance of a new simple class called ConnectionConfig that stores host and port.

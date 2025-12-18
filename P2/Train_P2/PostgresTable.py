@@ -1,11 +1,34 @@
-class PostgresTable:
+from abc import ABC, abstractmethod
+
+class DatabaseTable(ABC):
+
+    @abstractmethod
+    def insert_row(self, row:dict):
+        pass
+
+    @abstractmethod
+    def select_all(self):
+        pass
+
+class PortTable:
+
+    def __init__(self, port:str):
+        self.port = port
+
+    def connect(self):
+        return f"{self.port}"
+
+
+class PostgresTable(DatabaseTable):
 
     database_type = "PostgreSQL"
 
-    def __init__(self, table_name:str, columns:list[str]):
+    def __init__(self, table_name:str, columns:list[str],):
         self.table_name = table_name
         self._columns = columns
         self._rows = []
+        self.connect_string = PortTable("5432:5433")
+
     
     @property
     def columns(self):
@@ -19,6 +42,9 @@ class PostgresTable:
     
     def select_all(self):
         return self._rows
+    
+    def access_connect(self):
+        print(f"Postgresql must be connected on {self.connect_string.connect()}")
 
 class LogTable(PostgresTable):
     def __init__(self):
@@ -30,6 +56,10 @@ class LogTable(PostgresTable):
         super().insert_row(row)
 
 # --- TEST ---
+
+db = PostgresTable("Junior_db",["id","position"])
+
+db.access_connect()
 
 log = LogTable()
 
