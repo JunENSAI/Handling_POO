@@ -57,3 +57,36 @@ Write a script that:
     - Commit: connection.commit() (Crucial! Without this, data isn't saved).
 
     - Close: Close the cursor.
+
+---
+
+## Task 4
+
+- Step 1: SQL Setup (Do this in DBeaver)
+
+Open DBeaver, connect to your local Postgres database (db_poo), and run this SQL script to create your tables:
+
+```SQL
+
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50),
+    role VARCHAR(20)
+);
+
+CREATE TABLE IF NOT EXISTS products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    price FLOAT
+);
+```
+
+- Step 2: Python Implementation
+
+Now, create your specific model classes in Python.
+
+**Requirements:**
+
+- Create class User(Model). Set table_name = "users".
+
+- Create class Product(Model). Set table_name = "products".

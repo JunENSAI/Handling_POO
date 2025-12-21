@@ -55,6 +55,9 @@ class Model:
 class User(Model):
     table_name = "users"
 
+class Products(Model):
+    table_name="products"
+
 u = User(id=1, username="admin", role="super")
 print(u.username)
 
