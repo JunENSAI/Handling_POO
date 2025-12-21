@@ -34,6 +34,22 @@ class Model:
     def __init__(self, **kwargs):
         for key, value in kwargs.items():
             setattr(self, key, value)
+    
+    def save(self):
+        connection = Database().get_connection
+        cursor = connection.cursor()
+
+        try:
+            columns = ", ".join(self.__dict__.keys())
+            placeholders = ", ".join(["%s"] * len(self.__dict__))
+            values = tuple(self.__dict__.values())
+
+            sql = f"INSERT INTO {self.table_name} ({columns}) VALUES ({placeholders})"
+            cursor.execute(sql, values)
+
+            connection.commit()
+        finally:
+            cursor.close()
 
 # Test Case
 class User(Model):
@@ -41,3 +57,5 @@ class User(Model):
 
 u = User(id=1, username="admin", role="super")
 print(u.username)
+
+

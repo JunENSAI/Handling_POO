@@ -33,3 +33,27 @@ Write a script that:
     - Why? This turns User(name="Alice") into self.name = "Alice" automatically.
 
 ---
+
+## Task 3
+
+- Add the save() method to your Model class.
+
+- **Requirements:**
+
+    - Get the connection from your Database() Singleton.
+
+    - Create a cursor: cursor = connection.cursor().
+
+    -  the SQL:
+
+    - Join the keys with commas to make the column string.
+
+    - Create the placeholder string (e.g., %s, %s, %s).
+
+    - Format string: f"INSERT INTO {self.table_name} ({columns}) VALUES ({placeholders})"
+
+    - Execute: cursor.execute(sql, values).
+
+    - Commit: connection.commit() (Crucial! Without this, data isn't saved).
+
+    - Close: Close the cursor.
