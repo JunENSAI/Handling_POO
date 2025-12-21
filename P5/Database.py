@@ -36,8 +36,8 @@ class Model:
             setattr(self, key, value)
     
     def save(self):
-        connection = Database().get_connection
-        cursor = connection.cursor()
+        conn = Database().get_connection()
+        cursor = conn.cursor()
 
         try:
             columns = ", ".join(self.__dict__.keys())
@@ -47,18 +47,29 @@ class Model:
             sql = f"INSERT INTO {self.table_name} ({columns}) VALUES ({placeholders})"
             cursor.execute(sql, values)
 
-            connection.commit()
+            conn.commit()
         finally:
             cursor.close()
 
-# Test Case
+# Tables that must exists on Dbeaver (users , products)
 class User(Model):
     table_name = "users"
 
-class Products(Model):
+class Product(Model):
     table_name="products"
 
-u = User(id=1, username="admin", role="super")
-print(u.username)
+
+
+if __name__ == "__main__":
+
+    # 1. Create a User
+    admin = User(username="admin_alice", role="SuperAdmin")
+    admin.save()
+
+    # 2. Create a Product
+    laptop = Product(name="Gaming Laptop", price=1299.99)
+    laptop.save()
+
+    print("What you observe on Dbeaver") # content is added on table : users and products
 
 
