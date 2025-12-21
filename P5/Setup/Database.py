@@ -27,3 +27,17 @@ class Database:
             cls._instance = super().__new__(cls)
         return cls._instance
 
+class Model:
+
+    table_name = ""
+
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+# Test Case
+class User(Model):
+    table_name = "users"
+
+u = User(id=1, username="admin", role="super")
+print(u.username)
