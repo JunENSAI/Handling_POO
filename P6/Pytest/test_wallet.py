@@ -1,5 +1,15 @@
 import pytest
-from Pytest.Wallet import Wallet
+class Wallet:
+    def __init__(self, initial_amount=0):
+        self.balance = initial_amount
+
+    def spend(self, amount):
+        if amount > self.balance:
+            raise ValueError("Not enough money")
+        self.balance -= amount
+
+    def add_cash(self, amount):
+        self.balance += amount
 
 def test_wallet_add_cash():
     wallet = Wallet(10)

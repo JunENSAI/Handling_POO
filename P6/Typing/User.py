@@ -1,4 +1,4 @@
-from typing import List, Dict, Optional
+from typing import List, Optional
 
 class User:
     def __init__(self, name: str):
