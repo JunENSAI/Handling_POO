@@ -2,8 +2,6 @@
 Task:
 - Create a generator function id_stream():
     - It should use a while True: loop (normally dangerous, but safe with yield).
-    - It should keep incrementing a counter (id = 1, 2, 3...).
-    - It should yield the string "User_ID_{number}".
 
 - In your main block:
     - Create the generator object: stream = id_stream().
