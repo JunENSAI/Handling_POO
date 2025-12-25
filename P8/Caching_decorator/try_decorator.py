@@ -5,9 +5,7 @@ Task:
     - Add the decorator @lru_cache(maxsize=None).
 
 - In main():
-    - Call get_user_profile(1)
-    - Call get_user_profile(1)
-    - Call get_user_profile(2)
+    - Call get_user_profile(user_id) on {1,1,2}
 
 Watch the results !!
 """
