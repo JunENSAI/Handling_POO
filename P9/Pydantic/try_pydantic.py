@@ -9,7 +9,6 @@ Task:
 - Create an endpoint POST /create_product:
     - Accepts a item: Product.
     - Logic:
-        - Calculate the tax (20% of price).
         - Return a dictionary: {"name": item.name, "price_with_tax": item.price * 1.2, "status": item.in_stock}.
 """
 
